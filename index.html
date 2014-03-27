@@ -139,6 +139,68 @@
                 </ol>
             </section>
             <section>
+                <h2>Browse to compass-style.org</h2>
+                <p>Click Reference</p>
+                <p>"examples" are your friends.</p>
+            </section>
+            <section>
+                <h2>We'll be using Sassmeister</h2>
+                <p><a href="http://sassmeister.com">http://sassmeister.com</a></p>
+                <p>Click HTML (may need to refresh page after enabling)</p>
+            </section>
+            <section>
+                <h2>Start by Importing Compass</h2>
+                <p>Your first two lines of a sass file should be:</p>
+                <pre><code>@charset "UTF-8";
+@import "compass";</code></pre>
+            </section>
+            <section>
+                <h2>Define all link colors in one line</h2>
+                <p><pre class="fragment"><code>@include link-colors($normal, $hover, $active, $visited, $focus);</code></pre></p>
+            </section>
+            <section>
+                <h2>Div with box-sizing border-box</h2>
+                <p><pre class="fragment"><code>@include box-sizing(border-box);</code></pre></p>
+            </section>
+            <section>
+                <h2>Custom font (2 font types, ttf, woff)</h2>
+                <p><pre class="fragment"><code>@include font-face("Name", font-files("name.ttf", "name.woff"));</code></pre></p>
+                <p class="fragment">Buuuuuut....</p>
+            </section>
+            <section>
+                <h2>Compass fonts aren't bulletproof</h2>
+                <p>For "Bullet-Proof" we use Nicole Sullivan's technique</p>
+                <script src="https://gist.github.com/esteinborn/9634484.js"></script>
+            </section>
+            <section>
+                <h2>Icon Fonts</h2>
+                <p>You can also use Zurb's Icon fonts</p>
+                <p><a href="http://zurb.com/playground/foundation-icon-fonts-3">Foundation Icon Fonts 3</a></p>
+                <p><a href="http://fontello.com">Fontello is a viable alternative, it also lets you pick and choose fonts and add your own images as fonts</a></p>
+            </section>
+            <section>
+                <h2>Foundation Icons</h2>
+                <p>Create a button with a Star icon to the left of it</p>
+                <pre class="fragment"><code class="html">&lt;button&gt;&lt;i class=&quot;fi-star&quot;&gt;&lt;/i&gt; Star&lt;/button&gt;</code></pre>
+            </section>
+            <section>
+                <h2>Sass &amp; Color</h2>
+                <p><a href="http://jackiebalzer.com/color">Interactive demo Sass color functions</a></p>
+            </section>
+            <section>
+                <h2>Make a div have 50% opacity</h2>
+                <pre class="fragment"><code class="css">@include opacity(50);</code></pre>
+                <p class="fragment">Only need this for providing Old IE opacity, if not just use "opacity: .5;"</p>
+            </section>
+            <section>
+                <h2>RGBa Color</h2>
+                <p>Opacity affects HEX colors and whatever they contain</p>
+                <pre><code>rgba(255, 255, 255, 0.5);</code></pre>
+                <p>Give a div #bada55 background color with 70% opacity</p>
+                <pre class="fragment"><code class="css">background: rgba(186, 218, 85, 0.7);???</code></pre>
+                <pre class="fragment"><code class="css">background: rgba(#bada55, 0.7);</code></pre>
+            </section>
+            <section>
                 <h1>Next Time on...</h1>
                 <h1 class="blood">INF 362!</h1>
             </section>
