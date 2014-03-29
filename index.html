@@ -97,48 +97,6 @@
                 </ul>
             </section>
             <section>
-                <h3>Activity Question</h3>
-                <p></p>
-            </section>
-            <section>
-                <h2>Topics</h2>
-                <ol>
-                    <li>Analytcs - http://mashable.com/2011/05/23/how-to-use-google-analytics/</li>
-                    <li>Image optim/ 8 bit alpha png</li>
-                    <li>Image Sprite http://github.com/esteinborn/compass-sprites/ </li>
-                    <li>Asset Concat</li>
-                    <li>Asset Minification</li>
-                    <li>NPM</li>
-                    <li>Grunt - http://css-tricks.com/video-screencasts/130-first-moments-grunt/ - http://24ways.org/2013/grunt-is-not-weird-and-hard/</li>
-                    <li>Linting - http://www.jshint.com/about/</li>
-                    <li>HTTP request optimization</li>
-                    <li>Before vs After</li>
-                    <li>JS Perf</li>
-                    <li>optimization - http://www.hongkiat.com/blog/ultimate-guide-to-web-optimization-tips-best-practices/</li>
-                    <li>mockup to html</li>
-                attr()
-                hasclass()
-                ajax()
-                custom event types http://gist.github.com/esteinborn/9398782
-                sending data to click and .on methods
-                - Vanilla JS
-                - Jekyll
-                - Jekyll Templating
-                - Data JSON, YAML
-                - SASS Functions
-                - CSS Animations
-                API's
-                gmaps
-                CMSs?
-                Local storage
-                Cookies
-                geolocation
-                matchmedia
-                <li>html 5 video/audio http://www.videojs.com/ http://youtube.com http://vimeo.com</li>
-                print stylesheets - http://designshack.net/articles/css/6-thinks-i-learned-about-print-stylesheets-from-html5-boilerplate/
-                </ol>
-            </section>
-            <section>
                 <h2>Browse to compass-style.org</h2>
                 <p>Click Reference</p>
                 <p>"examples" are your friends.</p>
@@ -199,6 +157,238 @@
                 <p>Give a div #bada55 background color with 70% opacity</p>
                 <pre class="fragment"><code class="css">background: rgba(186, 218, 85, 0.7);???</code></pre>
                 <pre class="fragment"><code class="css">background: rgba(#bada55, 0.7);</code></pre>
+            </section>
+            <section>
+                <h2>Jekyll</h2>
+                <ul>
+                    <li>A static site generator</li>
+                    <li>Create a template</li>
+                    <li>Create a page, apply that template</li>
+                    <li>Create reusable bits to pull into pages/templates</li>
+                </ul>
+            </section>    
+            <section>
+                <h2>Jekyll Structure</h2>
+                <p></p>
+                <pre><code>├── _config.yml</code></pre>
+            </section>
+            <section>
+                <h2>_config.yml</h2>
+                <p>This stores all the configuration for Jekyll.</p>
+                <p>GH Pages is limited to a certain set of attributes in the file</p>
+            </section>
+            <section>
+                <h2>_config.yml</h2>
+                <p>Default</p>
+                <pre><code class="jekyll">name: Site Name
+markdown: redcarpet
+pygments: false
+# change baseurl to:
+# '': for root level domains ie: mycustomdomain.com
+# '/projectname': for subdomains ie: user.github.io/projectname
+baseurl: '/projectname'
+permalink: :title.html</code></pre>
+            </section>
+            <section>
+                <h2>Jekyll Structure</h2>
+                <p>Layouts Folder</p>
+                <pre><code>├── _layouts
+  ├── default.html
+  └── post.html</code></pre>
+            </section>
+            <section>
+                <h2>Jekyll Templates</h2>
+                <p>Base Setup _layouts folder -> default.html</p>
+                <pre><code class="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;body&gt;
+  {{ content }}
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </section>
+            <section>
+                <h1>{{ content }}</h1>
+                <p>It's where the magic happens</p>
+            </section>
+            <section>
+                <h2>It's your page content</h2>
+                <pre><code>└── index.html</code></pre>
+            </section>
+            <section>
+                <h2>How to use a template</h2>
+                <pre><code class="html">---
+layout: default
+title: Page Title
+---
+&lt;div class=&quot;foreground page&quot;&gt;
+  &lt;h2&gt;Page Content&lt;/h2&gt;
+&lt;/div&gt;</code></pre>
+            </section>
+            <section>
+                <h2>When Built:</h2>
+                <pre><code class="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;body&gt;
+  &lt;div class=&quot;foreground page&quot;&gt;
+    &lt;h2&gt;Page Content&lt;/h2&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </section>
+            <section>
+                <h2>Incemplates</h2>
+                <p>_layouts/secondary.html</p>
+                <pre><code class="html">---
+layout: default
+title: Page Title
+---
+&lt;div class=&quot;secondary&quot;&gt;
+  {{ content }}
+&lt;/div&gt;</code></pre>
+            </section>
+            <section>
+                <h2>Let's talk links</h2>
+                <p>You want to link your header image to your site root</p>
+                <pre><code class="javascript">&lt;a href=&quot;/&quot;&gt;My Site Root&lt;/a&gt;</code></pre>
+                <p class="fragment">nope...</p>
+            </section>
+            <section>
+                <h2>Let's talk links</h2>
+                <p>You'll need to use a template link code</p>
+                <pre><code class="javascript">&lt;a href=&quot;{{ site.baseurl }}&quot;&gt;My Site Root&lt;/a&gt;</code></pre>
+            </section>
+            <section>
+                <h2>Regular linking works fine if</h2>
+                <p>index.html &amp; aboutus.html</p>
+                <pre><code class="html">&lt;a href=&quot;index.html&quot;&gt;My Site Root&lt;/a&gt;></code></pre>
+                <pre><code class="html">&lt;a href=&quot;aboutus.html&quot;&gt;About Us&lt;/a&gt;></code></pre>
+            </section>
+            <section>
+                <h2>Two templates but same nav &amp; footer?</h2>
+                <p>Use _includes !!</p>
+                <pre><code>├── _includes
+  ├── navigation.html
+  └── footer.html
+</code></pre>
+            </section>
+            <section>
+                <pre><code class="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;body class="one"&gt;
+    {% include navigation.html %}
+    {{ content }}
+    {% include footer.html %}
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <pre><code class="html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;body class="two"&gt;
+    {% include navigation.html %}
+    {{ content }}
+    {% include footer.html %}
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </section>
+            <section>
+                <h2>One last thing...</h2>
+                <pre><code class="html">---
+layout: default
+title: Page Title
+---</code></pre>
+<p>that's not all you can use</p>
+            </section>
+            <section>
+                <h2>Custom Template attributes</h2>
+                <pre><code class="jekyll">---
+layout: default
+title: Page Title
+vendorScripts: ['script1.js', 'script2.js']
+customScripts: ['easy-tap.js']
+customStyles: ['easy-tap.css']
+---</code></pre>
+            </section>
+            <section>
+                <h2>Iterate over them</h2>
+                <pre><code class="jeykll">{% for styles in page.customStyles %}
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;css/{{ styles }}.css&quot;&gt;
+{% endfor %}</code></pre>
+                <pre><code class="jeykll">{% for scripts in page.vendorScripts %}
+  &lt;script src=&quot;js/{{ styles }}&quot;&gt;
+{% endfor %}</code></pre>
+            </section>
+            <section>
+                <h2>All Together Now</h2>
+                <pre><code class="">├── _config.yml
+├── _includes
+|   ├── footer.html
+|   └── navigation.html
+├── _layouts
+|   ├── default.html
+|   └── secondary.html
+├── aboutus.html
+└── index.html</code></pre>
+            </section>
+            <section>
+                <h2>Pushing it to GitHub</h2>
+                <p>Github will build the pages for you automatically</p>
+                <p>Your gh-pages branch will not show you your output code.</p>
+            </section>
+            <section>
+                <h2>Look through your site find the following</h2>
+                <ol>
+                    <li>What can be used as an _include?</li>
+                    <li>What can be used as a _layout?</li>
+                    <li>What will your page contents be?</li>
+                    <li>How many layouts will you need?</li>
+                </ol>
+            </section>
+            <section>
+                <h2>In your Teams</h2>
+                <ol>
+                    <li>Create one master template</li>
+                    <li>Create any sub templates you may want</li>
+                    <li>Convert as much reusable content to includes</li>
+                </ol>
+            </section>
+            <section>
+                <h3>Activity Question</h3>
+                <p></p>
+            </section>
+            <section>
+                <h2>Topics</h2>
+                <ol>
+                    <li>Analytcs - http://mashable.com/2011/05/23/how-to-use-google-analytics/</li>
+                    <li>Image optim/ 8 bit alpha png</li>
+                    <li>Image Sprite http://github.com/esteinborn/compass-sprites/ </li>
+                    <li>Asset Concat</li>
+                    <li>Asset Minification</li>
+                    <li>NPM</li>
+                    <li>Grunt - http://css-tricks.com/video-screencasts/130-first-moments-grunt/ - http://24ways.org/2013/grunt-is-not-weird-and-hard/</li>
+                    <li>Linting - http://www.jshint.com/about/</li>
+                    <li>HTTP request optimization</li>
+                    <li>Before vs After</li>
+                    <li>JS Perf</li>
+                    <li>optimization - http://www.hongkiat.com/blog/ultimate-guide-to-web-optimization-tips-best-practices/</li>
+                    <li>mockup to html</li>
+                attr()
+                hasclass()
+                ajax()
+                custom event types http://gist.github.com/esteinborn/9398782
+                sending data to click and .on methods
+                - Vanilla JS
+                - Data JSON, YAML
+                - SASS Functions
+                - CSS Animations
+                API's
+                gmaps
+                CMSs?
+                Local storage
+                Cookies
+                geolocation
+                matchmedia
+                <li>html 5 video/audio http://www.videojs.com/ http://youtube.com http://vimeo.com</li>
+                print stylesheets - http://designshack.net/articles/css/6-thinks-i-learned-about-print-stylesheets-from-html5-boilerplate/
+                </ol>
             </section>
             <section>
                 <h1>Next Time on...</h1>
